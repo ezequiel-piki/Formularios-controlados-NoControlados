@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
 const NoControlados = () => {
 
+  const form = useRef(null);
+
   const handleSubmit = (evento)=>{
     evento.preventDefault();
-    console.log('me diste click')
+    console.log('me diste click');
+    console.log(form);
   }
 
   return (
      
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} ref={form}>
         <input type="text" placeholder='Ingrese TODO' className='form-control mb-2' name='title'/>
         <textarea
           className="form-control mb-2"
