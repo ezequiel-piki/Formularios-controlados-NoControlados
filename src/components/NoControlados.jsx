@@ -6,14 +6,21 @@ const NoControlados = () => {
 
   const handleSubmit = (evento)=>{
     evento.preventDefault();
-    console.log('me diste click');
-    console.log(form);
+    const data = new FormData(form.current);
+    //console.log(...data.entries());
+    const {title,description,state}= Object.fromEntries([...data.entries()]);
+    console.log(title,description,state);
   }
 
   return (
      
     <form onSubmit={handleSubmit} ref={form}>
-        <input type="text" placeholder='Ingrese TODO' className='form-control mb-2' name='title'/>
+        <input 
+        type="text" 
+        placeholder='Ingrese TODO' 
+        className='form-control mb-2' 
+        name='title' 
+        defaultValue='TODO #01'/>
         <textarea
           className="form-control mb-2"
           type="text"
