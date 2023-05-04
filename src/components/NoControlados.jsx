@@ -1,15 +1,29 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 const NoControlados = () => {
 
   const form = useRef(null);
-
+  const [error, setError] = useState('');
   const handleSubmit = (evento)=>{
+    
     evento.preventDefault();
+   
+    //Capturar los datos del formulario como un Objeto
     const data = new FormData(form.current);
-    //console.log(...data.entries());
-    const {title,description,state}= Object.fromEntries([...data.entries()]);
-    console.log(title,description,state);
+    const dataObject = Object.fromEntries([...data.entries()]);
+    
+    //console.log(dataObject.title, dataObject.description, dataObject.state);
+
+    //Validación de los datos del formulario
+    
+    //Titulo TODO
+    if(dataObject.title.trim() === '') return setError('Llena el campo titulo');
+    
+    //Description TODO
+    if(dataObject.description.trim() === '') return setError('Llena el campo description');
+    
+    //State TODO
+    if(dataObject.state.trim() === '')  return setError('Llena el campo state');
   }
 
   return (
@@ -42,7 +56,9 @@ const NoControlados = () => {
         >
           Agregar
         </button>
-       
+       {
+         error !== '' && error
+       }
 
     </form>
   )
