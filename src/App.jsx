@@ -1,8 +1,9 @@
+import NoControlados from "./components/NoControlados";
 
 const App = () => {
   return (
     <>
-    <h1>Componente APP</h1>
+     <NoControlados/>   
     </>
   )
 }
