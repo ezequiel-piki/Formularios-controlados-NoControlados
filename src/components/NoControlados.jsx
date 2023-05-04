@@ -1,9 +1,15 @@
 import React from 'react'
 
 const NoControlados = () => {
+
+  const handleSubmit = (evento)=>{
+    evento.preventDefault();
+    console.log('me diste click')
+  }
+
   return (
      
-    <form>
+    <form onSubmit={handleSubmit}>
         <input type="text" placeholder='Ingrese TODO' className='form-control mb-2' name='title'/>
         <textarea
           className="form-control mb-2"
@@ -26,7 +32,7 @@ const NoControlados = () => {
         >
           Agregar
         </button>
-        <img src="" alt="" />
+       
 
     </form>
   )
