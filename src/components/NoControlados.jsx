@@ -4,10 +4,14 @@ const NoControlados = () => {
 
   const form = useRef(null);
   const [error, setError] = useState('');
+ 
   const handleSubmit = (evento)=>{
     
     evento.preventDefault();
-   
+    
+    //Ponemos al principio de nuestro metodo setError('') para limpiar el formulario
+    setError('');
+
     //Capturar los datos del formulario como un Objeto
     const data = new FormData(form.current);
     const dataObject = Object.fromEntries([...data.entries()]);
